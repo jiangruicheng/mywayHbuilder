@@ -194,8 +194,10 @@ class WebappModeListener implements ICoreStatusListener, IOnCreateSplashView {
                         Log.d("HBWEB", "DOCUIRL: " + app.obtainAppDocPath());
                         // c.callback();
                         if (!isload) {
+                            //获取栈顶点webview，加载指定页面
                             SDK.obtainAllIWebview().get(SDK.obtainAllIWebview().size() - 1).loadUrl(app.obtainWebviewBaseUrl() + "view/found.html");
                             isload = true;
+                            //监听webview栈,如果有webview入栈，说明跳转至二级页面，隐藏底部导航栏.
                             new Thread() {
                                 @Override
                                 public void run() {
